@@ -29,9 +29,14 @@ for fi in xrange(features.shape[1]):
     thresh = features[:,fi].copy()
     thresh.sort()
     for t in thresh:
-        pred = (freatures[:,fi] > t)
+        pred = (features[:,fi] > t)
         acc = (labels[pred] == 'virginica').mean()
         if acc > best_acc:
            best_acc = acc
            best_fi = fi
            best_t = t
+
+plt.scatter(features[labels == 'virginica',2],features[labels == 'virginica',3],marker='o')
+plt.scatter(features[labels != 'virginica',2],features[labels == 'virginica',3],marker='x')
+plt.show()
+
